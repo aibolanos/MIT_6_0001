@@ -38,6 +38,7 @@ while abs(down_payment - savings(starting_salary, round(guess/10000, 4))) > epsi
         high = guess
     guess = (high+low)/2
     steps+=1
+    
 #return
 print("Best savings rate: " + str(round(guess/10000, 4)))
 print("Steps in bisection search: " + str(steps))
