@@ -2,12 +2,10 @@
 def savings(starting_salary, portion_saved):
     current_savings = 0
     monthly_salary = starting_salary / 12
-    months = 0
     for x in range(36):
         current_savings += current_savings * r / 12
         current_savings += monthly_salary * portion_saved
-        months+=1
-        if months % 6 == 0:
+        if (x+1) % 6 == 0:
             starting_salary += starting_salary * semi_annual_raise
             monthly_salary = starting_salary / 12
     return current_savings
