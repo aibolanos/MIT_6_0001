@@ -31,13 +31,13 @@ steps = 0
 high = 10000
 low = 0
 guess = (high + low) / 2
-while abs(down_payment - savings(starting_salary, guess)) > epsilon:
-    if down_payment - savings(starting_salary, guess) > epsilon:
+while abs(down_payment - savings(starting_salary, round(guess/10000, 4))) > epsilon:
+    if down_payment - savings(starting_salary, round(guess/10000, 4)) > epsilon:
         low = guess
     else:
         high = guess
     guess = (high+low)/2
     steps+=1
 #return
-print("Best savings rate: " + str(round(guess, 4)))
+print("Best savings rate: " + str(round(guess/10000, 4)))
 print("Steps in bisection search: " + str(steps))
