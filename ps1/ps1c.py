@@ -18,7 +18,7 @@ starting_salary = int(starting_salary) #str -> int
 
 #Value Initialization
 semi_annual_raise = 0.07
-r = 0.04
+r = 0.04 #apr
 portion_down_payment = 0.25
 total_cost = 1000000
 epsilon = 100 #Our Savings can be in the range of $100 of Down Payment
@@ -31,14 +31,19 @@ steps = 0
 high = 10000
 low = 0
 guess = (high + low) / 2
-while abs(down_payment - savings(starting_salary, round(guess/10000, 4))) > epsilon:
-    if down_payment - savings(starting_salary, round(guess/10000, 4)) > epsilon:
-        low = guess
+while True:
+    if savings(starting_salary, 1) < down_payment:
+        print("It is not possible to pay the down payment in three years.")
+        break
+    rate = down_payment - savings(starting_salary, round(guess/10000, 4))
+    if  abs(rate) > epsilon:
+        if down_payment - savings(starting_salary, round(guess/10000, 4)) > epsilon:
+            low = guess
+        else:
+            high = guess
+        guess = (high+low)/2
+        steps+=1
     else:
-        high = guess
-    guess = (high+low)/2
-    steps+=1
-    
-#return
-print("Best savings rate: " + str(round(guess/10000, 4)))
-print("Steps in bisection search: " + str(steps))
+        print("Best savings rate: " + str(round(guess/10000, 4)))
+        print("Steps in bisection search: " + str(steps))
+        break
