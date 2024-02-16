@@ -10,9 +10,6 @@ def savings(starting_salary, portion_saved):
         if months % 6 == 0:
             starting_salary += starting_salary * semi_annual_raise
             monthly_salary = starting_salary / 12
-        if x == 35: 
-            print("YEP")
-            print(250000 - current_savings)
     return current_savings
 
 #Get user input, ask for needed info
