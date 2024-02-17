@@ -75,13 +75,10 @@ def get_guessed_word(secret_word, letters_guessed):
       which letters in secret_word have been guessed so far.
     '''
     guessed_word = ["_ "] * len(secret_word)
-    for x in range(len(secret_word)):
-        for y in range(len(letters_guessed)):
-            if secret_word[x] == letters_guessed[y]:
-                guessed_word[x] = letters_guessed[y]
-                break
-    seperator = ""
-    return seperator.join(guessed_word)
+    for x, letter in enumerate(secret_word):
+        if letter in letters_guessed:
+            guessed_word[x] = letter
+    return "".join(guessed_word)
 
 
 
