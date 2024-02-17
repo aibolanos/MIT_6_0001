@@ -88,7 +88,7 @@ def get_available_letters(letters_guessed):
     returns: string (of letters), comprised of letters that represents which letters have not
       yet been guessed.
     '''
-    print(string.ascii_lowercase)
+    return string.ascii_lowercase
     
     
 
@@ -207,8 +207,9 @@ if __name__ == "__main__":
     
     secret_word = choose_word(wordlist)
     hangman(secret_word)
-    letters_guessed = []
-    get_available_letters(letters_guessed)
+
+    letters_guessed = ['e', 'i', 'k', 'p', 'r', 's']
+    print(get_available_letters(letters_guessed)) 
 
 ###############
     
