@@ -74,8 +74,14 @@ def get_guessed_word(secret_word, letters_guessed):
     returns: string, comprised of letters, underscores (_), and spaces that represents
       which letters in secret_word have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    guessed_word = ["_ "] * len(secret_word)
+    for x in range(len(secret_word)):
+        for y in range(len(letters_guessed)):
+            if secret_word[x] == letters_guessed[y]:
+                guessed_word[x] = letters_guessed[y]
+                break
+    seperator = ""
+    return seperator.join(guessed_word)
 
 
 
