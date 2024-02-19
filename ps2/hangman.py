@@ -76,8 +76,8 @@ def get_guessed_word(secret_word, letters_guessed):
     '''
     guessed_word = ["_ "] * len(secret_word)
     for x, letter in enumerate(secret_word):
-        if letter in letters_guessed:
-            guessed_word[x] = letter
+      if letter in letters_guessed:
+        guessed_word[x] = letter
     return "".join(guessed_word)
 
 
@@ -88,7 +88,12 @@ def get_available_letters(letters_guessed):
     returns: string (of letters), comprised of letters that represents which letters have not
       yet been guessed.
     '''
-    return string.ascii_lowercase
+    alphabet = set(string.ascii_lowercase)
+    guessed = set(letters_guessed)
+    available_letters = alphabet - guessed
+    available_letters = "".join(sorted(available_letters))
+
+    return available_letters
     
     
 
