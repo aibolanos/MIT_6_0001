@@ -132,22 +132,25 @@ def hangman(secret_word):
     print("I am thinking of a word that is " + str(len(secret_word)) + " letters long.")
     print("You have " + str(warnings_left) + " warnings left.")
 
-    #Repeat each round
-    print("-" * 13)
-    print("You have " + str(guesses_left) + " guesses left.")
-    print("Available letters: " + get_available_letters(letters_guessed))
-    guessed_letter = input("Please guess a letter: ")
-    
-    if guessed_letter not in string.ascii_letters:
-      warnings_left -= 1
-      print("Oops! That is not a valid letter. You have " + str(warnings_left) + " warnings left: " + get_guessed_word(secret_word, letters_guessed))
-      if not warnings_left:
-        guesses_left -= 1
-    elif guessed_letter in secret_word:
-      letters_guessed += guessed_letter
-      print("Good guess: " + get_guessed_word(secret_word, letters_guessed))
-    else:
-      print("Oops! That letter is not in my word: " + get_guessed_word(secret_word, letters_guessed))
+    while guesses_left:
+      #Repeat each round
+      print("-" * 13)
+      print("You have " + str(guesses_left) + " guesses left.")
+      print("Available letters: " + get_available_letters(letters_guessed))
+      guessed_letter = input("Please guess a letter: ").lower()
+      
+      if guessed_letter not in string.ascii_letters:
+        warnings_left -= 1
+        print("Oops! That is not a valid letter. You have " + str(warnings_left) + " warnings left: " + get_guessed_word(secret_word, letters_guessed))
+        if not warnings_left:
+          guesses_left -= 1
+      elif guessed_letter in secret_word:
+        guesses_left-=1
+        letters_guessed += guessed_letter
+        print("Good guess: " + get_guessed_word(secret_word, letters_guessed))
+      else:
+        guesses_left-=1
+        print("Oops! That letter is not in my word: " + get_guessed_word(secret_word, letters_guessed))
 
 
 
