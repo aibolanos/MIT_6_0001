@@ -145,7 +145,6 @@ def hangman(secret_word):
         if not warnings_left:
           guesses_left -= 1
       elif guessed_letter in secret_word:
-        guesses_left-=1
         letters_guessed += guessed_letter
         print("Good guess: " + get_guessed_word(secret_word, letters_guessed))
       else:
