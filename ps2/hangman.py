@@ -162,11 +162,15 @@ def hangman(secret_word):
         else:
           guesses_left-=1
         print("Oops! That letter is not in my word: " + get_guessed_word(secret_word, letters_guessed))
-    if is_word_guessed(secret_word, letters_guessed):
+    if is_word_guessed(secret_word, letters_guessed) and guesses_left:
         total_score = guesses_left * len(set(secret_word))
         print("-" * 13)
         print("Congratulations, you won!")
         print("Your total score for this game is: " + str(total_score))
+    else:
+        print("-" * 13)
+        print("Sorry, you ran out of guesses. The word was " + secret_word + ".")
+        
         
 
 
@@ -255,7 +259,7 @@ if __name__ == "__main__":
     # uncomment the following two lines.
     
     # secret_word = choose_word(wordlist)
-    secret_word = "tact" #For Testing Purposes
+    secret_word = "else" #For Testing Purposes
     hangman(secret_word)
 
 ###############
