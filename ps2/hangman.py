@@ -129,8 +129,15 @@ def hangman(secret_word):
     print("Welcome to the game Hangman!")
     print("I am thinking of a word that is " + str(len(secret_word)) + " letters long.")
     print("_" * 13)
+    print()
+
+    #Repeat each round
     print("You have " + str(guesses_left) + " guesses left.")
     print("Available letters: " + get_available_letters(letters_guessed))
+    guessed_letter = input("Please guess a letter: ")
+    if(guessed_letter in secret_word):
+      letters_guessed += guessed_letter
+      print("Good guess: " + get_guessed_word(secret_word, letters_guessed))
 
 
 
