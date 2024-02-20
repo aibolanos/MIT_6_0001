@@ -122,8 +122,15 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
+    #init variables
+    guesses_left = 6
+    letters_guessed = []
+
     print("Welcome to the game Hangman!")
     print("I am thinking of a word that is " + str(len(secret_word)) + " letters long.")
+    print("_" * 13)
+    print("You have " + str(guesses_left) + " guesses left.")
+    print("Available letters: " + get_available_letters(letters_guessed))
 
 
 
