@@ -123,12 +123,13 @@ def hangman(secret_word):
     Follows the other limitations detailed in the problem write-up.
     '''
     #init variables
+    warnings_left = 3
     guesses_left = 6
     letters_guessed = []
 
     print("Welcome to the game Hangman!")
     print("I am thinking of a word that is " + str(len(secret_word)) + " letters long.")
-    
+    print("You have " + str(warnings_left) + " warnings left.")
     #Repeat each round
     print("-" * 13)
     print("You have " + str(guesses_left) + " guesses left.")
