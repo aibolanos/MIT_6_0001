@@ -210,11 +210,9 @@ if __name__ == "__main__":
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
     
-    secret_word = choose_word(wordlist)
+    # secret_word = choose_word(wordlist)
+    secret_word = "Testing" #For Testing Purposes
     hangman(secret_word)
-
-    letters_guessed = ['e', 'i', 'k', 'p', 'r', 's']
-    print(get_available_letters(letters_guessed)) 
 
 ###############
     
