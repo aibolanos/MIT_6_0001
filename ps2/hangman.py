@@ -161,8 +161,10 @@ def hangman(secret_word):
           guesses_left-=1
         print("Oops! That letter is not in my word: " + get_guessed_word(secret_word, letters_guessed))
     if is_word_guessed(secret_word, letters_guessed):
+        total_score = guesses_left * len(set(secret_word))
         print("-" * 13)
         print("Congratulations, you won!")
+        print("Your total score for this game is: " + str(total_score))
         
 
 
