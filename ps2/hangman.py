@@ -139,7 +139,7 @@ def hangman(secret_word):
       print("Available letters: " + get_available_letters(letters_guessed))
       guessed_letter = input("Please guess a letter: ").lower()
       
-      if guessed_letter not in string.ascii_letters:
+      if guessed_letter not in string.ascii_letters or guessed_letter in letters_guessed:
         if warnings_left: warnings_left -= 1
         print("Oops! That is not a valid letter. You have " + str(warnings_left) + " warnings left: " + get_guessed_word(secret_word, letters_guessed))
         if not warnings_left:
