@@ -141,15 +141,17 @@ def hangman(secret_word):
       guessed_letter = input("Please guess a letter: ").lower()
       
       if guessed_letter not in string.ascii_letters:
-        if warnings_left: warnings_left -= 1
-        print("Oops! That is not a valid letter. You have " + str(warnings_left) + " warnings left: " + get_guessed_word(secret_word, letters_guessed))
-        if not warnings_left:
+        warnings_left -= 1
+        if warnings_left < 0:
           guesses_left -= 1
+          print("Oops! That is not a valid letter. You have no warnings left so you lose one guess: " + get_guessed_word(secret_word, letters_guessed))
+        else: print("Oops! That is not a valid letter. You have " + str(warnings_left) + " warnings left: " + get_guessed_word(secret_word, letters_guessed))
       elif guessed_letter in letters_guessed:
-        if warnings_left: warnings_left -= 1
-        print("Oops! You've already guessed that letter. You have " + str(warnings_left) + " warnings left: " + get_guessed_word(secret_word, letters_guessed))
-        if not warnings_left:
+        warnings_left -= 1
+        if warnings_left < 0:
           guesses_left -= 1
+          print("Oops! You've already guessed that letter. You have no warnings left so you lose one guess: " + get_guessed_word(secret_word, letters_guessed))
+        else: print("Oops! You've already guessed that letter. You have " + str(warnings_left) + " warnings left: " + get_guessed_word(secret_word, letters_guessed))
       elif guessed_letter in secret_word:
         letters_guessed += guessed_letter
         print("Good guess: " + get_guessed_word(secret_word, letters_guessed))
@@ -253,7 +255,7 @@ if __name__ == "__main__":
     # uncomment the following two lines.
     
     # secret_word = choose_word(wordlist)
-    secret_word = "testing" #For Testing Purposes
+    secret_word = "tact" #For Testing Purposes
     hangman(secret_word)
 
 ###############
