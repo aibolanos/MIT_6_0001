@@ -133,7 +133,7 @@ def hangman(secret_word):
     print("I am thinking of a word that is " + str(len(secret_word)) + " letters long.")
     print("You have " + str(warnings_left) + " warnings left.")
 
-    while guesses_left:
+    while guesses_left and not is_word_guessed(secret_word, letters_guessed):
       #Repeat each round
       print("-" * 13)
       print("You have " + str(guesses_left) + " guesses left.")
@@ -160,6 +160,10 @@ def hangman(secret_word):
         else:
           guesses_left-=1
         print("Oops! That letter is not in my word: " + get_guessed_word(secret_word, letters_guessed))
+    if is_word_guessed(secret_word, letters_guessed):
+        print("-" * 13)
+        print("Congratulations, you won!")
+        
 
 
 
