@@ -122,8 +122,8 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    print("Welcome to the game Hangman!")
+    print("I am thinking of a word that is " + str(len(secret_word)) + " letters long.")
 
 
 
@@ -211,7 +211,7 @@ if __name__ == "__main__":
     # uncomment the following two lines.
     
     # secret_word = choose_word(wordlist)
-    secret_word = "Testing" #For Testing Purposes
+    secret_word = "testing" #For Testing Purposes
     hangman(secret_word)
 
 ###############
