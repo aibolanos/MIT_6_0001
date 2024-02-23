@@ -155,16 +155,16 @@ def hangman(secret_word):
                     print("Oops! That is not a valid letter. You have", warnings_left, "warnings left:", get_guessed_word(secret_word, letters_guessed))
                 if guessed_letter in letters_guessed:
                     print("Oops! You've already guessed that letter. You have", warnings_left, "warnings left:", get_guessed_word(secret_word, letters_guessed))
-        if guessed_letter in secret_word:
-            letters_guessed += guessed_letter
-            print("Good guess:", get_guessed_word(secret_word, letters_guessed))
         else:
             letters_guessed += guessed_letter
-            if guessed_letter in vowels:
-                guesses_left-=2
+            if guessed_letter in secret_word:
+                print("Good guess:", get_guessed_word(secret_word, letters_guessed))
             else:
-                guesses_left-=1
-            print("Oops! That letter is not in my word:", get_guessed_word(secret_word, letters_guessed))
+                if guessed_letter in vowels:
+                    guesses_left-=2
+                else:
+                    guesses_left-=1
+                print("Oops! That letter is not in my word:", get_guessed_word(secret_word, letters_guessed))
     
     #Out of loop: Print Congratulatory or Losing message.
     if is_word_guessed(secret_word, letters_guessed) and guesses_left > 0:
