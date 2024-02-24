@@ -203,11 +203,13 @@ def match_with_gaps(my_word, other_word):
     
     if len(my_string) != len(other_word):
         return False
-    for letter in my_string:
+    for index, letter in enumerate(my_string):
         if letter != "_":
             if letter  not in other_word:
                 return False
             if my_string.count(letter) != other_word.count(letter):
+              return False
+            if my_string[index] != other_word[index]:
               return False
     
     return True
@@ -224,8 +226,11 @@ def show_possible_matches(my_word):
              that has already been revealed.
 
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    matches_list = []
+    for word in wordlist:
+        if match_with_gaps(my_word, word):
+          matches_list.append(word)
+    print(" ".join(matches_list))
 
 
 
@@ -283,4 +288,4 @@ if __name__ == "__main__":
     
     #secret_word = choose_word(wordlist)
     #hangman_with_hints(secret_word)
-    print(match_with_gaps("a_ ple", "apple"))
+    show_possible_matches("t_ _ t")
