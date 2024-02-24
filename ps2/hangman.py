@@ -284,7 +284,7 @@ def hangman_with_hints(secret_word):
       
         #Warning Catch: if letter already guessed or invalid guess, give warning
         if guessed_letter == '*':
-            print("Possible word matches are :")
+            print("Possible word matches are:")
             show_possible_matches(get_guessed_word(secret_word, letters_guessed))
         elif guessed_letter not in string.ascii_letters or guessed_letter in letters_guessed:
             warnings_left -= 1
