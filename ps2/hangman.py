@@ -196,11 +196,19 @@ def match_with_gaps(my_word, other_word):
         _ , and my_word and other_word are of the same length;
         False otherwise: 
     '''
-    my_word = [*my_word]
-    my_word.remove(" ")
-
-    if len(my_word) != len(other_word):
+    my_string = ""
+    for c in my_word:
+        if c != ' ':
+          my_string += c
+    
+    if len(my_string) != len(other_word):
         return False
+    for letter in my_string:
+        if letter != "_":
+            if letter  not in other_word:
+                return False
+            if my_string.count(letter) != other_word.count(letter):
+              return False
     
     return True
 
@@ -275,4 +283,4 @@ if __name__ == "__main__":
     
     #secret_word = choose_word(wordlist)
     #hangman_with_hints(secret_word)
-    print(match_with_gaps("te_ t", "tact"))
+    print(match_with_gaps("a_ ple", "apple"))
