@@ -229,8 +229,10 @@ def show_possible_matches(my_word):
     matches_list = []
     for word in wordlist:
         if match_with_gaps(my_word, word):
-          matches_list.append(word)
-    print(" ".join(matches_list))
+            matches_list.append(word)
+    if not matches_list:
+        print("No matches found")
+    else: print(" ".join(matches_list))
 
 
 
@@ -288,4 +290,4 @@ if __name__ == "__main__":
     
     #secret_word = choose_word(wordlist)
     #hangman_with_hints(secret_word)
-    show_possible_matches("t_ _ t")
+    show_possible_matches("abbbbbb_ ")
