@@ -42,6 +42,7 @@ def load_words():
         wordlist.append(line.strip().lower())
     print("  ", len(wordlist), "words loaded.")
     return wordlist
+    
 
 def get_frequency_dict(sequence):
     """
@@ -91,8 +92,20 @@ def get_word_score(word, n):
     n: int >= 0
     returns: int >= 0
     """
-    
-    pass  # TO DO... Remove this line when you implement this function
+
+    word = word.lower()
+    # Get sum of points for letters in the word
+    first_comp = 0
+    for char in word:
+        if char in string.ascii_letters:
+            first_comp += SCRABBLE_LETTER_VALUES[char]
+    # The second component is the larger of 1 or 7*wordlen - 3*(n-wordlen)
+    second_comp = max(1, 7 * len(word) - 3 * (n - len(word)))
+
+    # Return the score for a word which is the product of the two components
+    return first_comp * second_comp
+
+
 
 #
 # Make sure you understand how this function works and what it does!
