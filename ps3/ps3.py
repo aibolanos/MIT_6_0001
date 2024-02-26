@@ -1,12 +1,4 @@
-'''
-
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-'''
-print ('Hello World')# 6.0001 Problem Set 3
+# 6.0001 Problem Set 3
 #
 # The 6.0001 Word Game
 # Created by: Kevin Luu <luuk> and Jenna Wiens <jwiens>
@@ -366,5 +358,3 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
-    hand = {'h':1, 'e':1, 'l':3, 'o':1, 'x':1}
-    print(update_hand(hand, "hello"))
