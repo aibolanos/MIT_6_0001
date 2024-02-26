@@ -1,11 +1,17 @@
-# 6.0001 Problem Set 3
+'''
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+'''
+print ('Hello World')# 6.0001 Problem Set 3
 #
 # The 6.0001 Word Game
 # Created by: Kevin Luu <luuk> and Jenna Wiens <jwiens>
 #
-# Name          : <your name>
-# Collaborators : <your collaborators>
-# Time spent    : <total time>
+# Name          : Alberto Bolanos
 
 import math
 import random
@@ -180,7 +186,12 @@ def update_hand(hand, word):
     returns: dictionary (string -> int)
     """
 
-    pass  # TO DO... Remove this line when you implement this function
+    new_hand = {}
+    word_freq = get_frequency_dict(word)
+    for key in hand:
+        new_hand[key] = hand[key] - word_freq.get(key,0)
+    return new_hand
+    
 
 #
 # Problem #3: Test word validity
@@ -355,3 +366,5 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
+    hand = {'h':1, 'e':1, 'l':3, 'o':1, 'x':1}
+    print(update_hand(hand, "hello"))
