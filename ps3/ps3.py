@@ -96,9 +96,8 @@ def get_word_score(word, n):
     word = word.lower()
     # Get sum of points for letters in the word
     first_comp = 0
-    for char in word:
-        if char in string.ascii_letters:
-            first_comp += SCRABBLE_LETTER_VALUES[char]
+    for char in word:    
+        first_comp += SCRABBLE_LETTER_VALUES[char]
     # The second component is the larger of 1 or 7*wordlen - 3*(n-wordlen)
     second_comp = max(1, 7 * len(word) - 3 * (n - len(word)))
 
