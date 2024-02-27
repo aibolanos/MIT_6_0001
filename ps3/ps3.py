@@ -200,7 +200,13 @@ def is_valid_word(word, hand, word_list):
     returns: boolean
     """
 
-    pass  # TO DO... Remove this line when you implement this function
+    if word in word_list:
+        word_freq = get_frequency_dict(word)
+        for key in word_freq:
+            if word_freq[key] > hand.get(key, 0):
+                return False
+        return True
+    return False
 
 #
 # Problem #5: Playing a hand
