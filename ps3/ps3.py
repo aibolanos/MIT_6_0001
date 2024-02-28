@@ -364,5 +364,3 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
-
-    print(is_valid_word("EVIL", {'e': 1, 'v': 2, 'n': 1, 'i': 1, 'l': 2}, word_list))
