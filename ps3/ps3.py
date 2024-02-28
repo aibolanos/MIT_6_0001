@@ -179,7 +179,7 @@ def update_hand(hand, word):
     """
 
     new_hand = {}
-    word_freq = get_frequency_dict(word)
+    word_freq = get_frequency_dict(word.lower())
     for key in hand:
         new_hand[key] = hand[key] - word_freq.get(key,0)
     return new_hand
@@ -364,3 +364,5 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
+
+    print(update_hand({'e': 1, 'v': 2, 'n': 1, 'i': 1, 'l': 2}, "Evil"))
