@@ -199,7 +199,7 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     returns: boolean
     """
-
+    word = word.lower()
     if word in word_list:
         word_freq = get_frequency_dict(word)
         for key in word_freq:
@@ -365,4 +365,4 @@ if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
 
-    print(update_hand({'e': 1, 'v': 2, 'n': 1, 'i': 1, 'l': 2}, "Evil"))
+    print(is_valid_word("EVIL", {'e': 1, 'v': 2, 'n': 1, 'i': 1, 'l': 2}, word_list))
