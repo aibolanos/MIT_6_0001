@@ -201,12 +201,22 @@ def is_valid_word(word, hand, word_list):
     returns: boolean
     """
     word = word.lower()
+    word_freq = get_frequency_dict(word)
     if word in word_list:
-        word_freq = get_frequency_dict(word)
         for key in word_freq:
             if word_freq[key] > hand.get(key, 0):
                 return False
         return True
+    if '*' in word:
+        for vowel in VOWELS:
+            new_word = ""
+            for letter in word:
+                if letter != '*':
+                    new_word += letter
+                else:
+                    new_word+=vowel
+            if new_word in word_list:
+                return True
     return False
 
 #
