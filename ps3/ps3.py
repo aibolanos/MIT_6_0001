@@ -267,35 +267,53 @@ def play_hand(hand, word_list):
     
     # BEGIN PSEUDOCODE <-- Remove this comment when you implement this function
     # Keep track of the total score
+    score = 0
     
     # As long as there are still letters left in the hand:
+    while calculate_handlen(hand):
     
         # Display the hand
+        print("Current hand: ", end = "") 
+        display_hand(hand)
+
         
         # Ask user for input
+        word = input("Enter word, or \"!!\" to indicate that you are finished: ")
         
         # If the input is two exclamation points:
-        
+        if word == "!!":
             # End the game (break out of the loop)
+            break
 
             
         # Otherwise (the input is not two exclamation points):
-
+        else:
             # If the word is valid:
-
+            if is_valid_word(word, hand, word_list):
+                score += get_word_score(word, calculate_handlen(hand))
                 # Tell the user how many points the word earned,
+                print("\"" + word + "\" earned", get_word_score(word, calculate_handlen(hand)), "points.", end = " ")
                 # and the updated total score
+                print("Total:", score, "points\n")
 
             # Otherwise (the word is not valid):
+            else:
                 # Reject invalid word (print a message)
+                print("That is not a valid word. Please choose another word.\n")
+
                 
             # update the user's hand by removing the letters of their inputted word
+            hand = update_hand(hand, word)
             
 
     # Game is over (user entered '!!' or ran out of letters),
+    if not calculate_handlen(hand):
+        print("Ran out of letters. ", end = "")
     # so tell user the total score
+    print("Total:", score, "points")
 
     # Return the total score as result of function
+    return score
 
 
 
@@ -377,3 +395,5 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
+    hand = {'a':1, 'c':1, 'f':1, 'i':1, '*':1, 't':1, 'x':1}
+    play_hand(hand, word_list)
