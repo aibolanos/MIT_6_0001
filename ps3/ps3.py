@@ -395,5 +395,3 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
-    hand = {'a':1, 'c':1, 'f':1, 'i':1, '*':1, 't':1, 'x':1}
-    play_hand(hand, word_list)
