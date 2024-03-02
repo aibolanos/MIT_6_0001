@@ -349,7 +349,18 @@ def substitute_hand(hand, letter):
     returns: dictionary (string -> int)
     """
     
-    pass  # TO DO... Remove this line when you implement this function
+    if letter not in hand:
+        return hand
+    else:
+        new_hand = hand.copy()
+        new_letter = random.choice(string.ascii_lowercase)
+        while new_letter in new_hand:
+            new_letter = random.choice(string.ascii_lowercase)
+        new_hand[new_letter] = new_hand[letter]
+        del new_hand[letter]
+        return new_hand
+        
+
        
     
 def play_game(word_list):
