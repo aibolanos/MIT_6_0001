@@ -308,9 +308,9 @@ def play_hand(hand, word_list):
 
     # Game is over (user entered '!!' or ran out of letters),
     if not calculate_handlen(hand):
-        print("Ran out of letters. ", end = "")
+        print("Ran out of letters.")
     # so tell user the total score
-    print("Total:", score, "points")
+    print("Total score for this hand:", score)
 
     # Return the total score as result of function
     return score
@@ -400,7 +400,7 @@ def play_game(word_list):
     for num in range(num_hands):
         #init game block
         current_hand = deal_hand(HAND_SIZE)
-        print("\nCurrent hand : ", end = '')
+        print("Current hand : ", end = '')
         display_hand(current_hand)
         while True:
             substitute_hand_bool = input("Would you like to substitute a letter? ").lower()
@@ -410,18 +410,23 @@ def play_game(word_list):
         if substitute_hand_bool == "yes":
             replace_letter = input("Which letter would you like to replace: ")
             current_hand = substitute_hand(current_hand, replace_letter)
+
+        
         
         print("\n")
-
         total_score += play_hand(current_hand, word_list)
-        print("Total score for this hand:", total_score)
         print("-"*10)
+        
         while True:
             replay_hand = input("Would you like to replay the hand? ").lower()
             if replay_hand == "yes" or replay_hand == "no":
-                break
-        if replay_hand.lower() == "yes":
-            total_score += play_hand(current_hand, word_list)
+                if replay_hand.lower() == "yes":
+                    print("\n")
+                    total_score += play_hand(current_hand, word_list)
+                    print("-"*10)
+                else: break
+    
+    print("Total score over all hands: ", total_score)
     
     
 
