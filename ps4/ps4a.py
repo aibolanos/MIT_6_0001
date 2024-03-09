@@ -23,7 +23,15 @@ def get_permutations(sequence):
     a different order than what is listed here.
     '''
 
-    pass #delete this line and replace with your code here
+    perm_list = []
+    perm_list.append(sequence)
+    if len(sequence) == 1:
+        # perm_list.append(sequence)
+        return perm_list
+    else:
+        perm_list.extend(get_permutations(sequence[1:]))
+        perm_list[1] += sequence[0]
+    return perm_list
 
 if __name__ == '__main__':
 #    #EXAMPLE
@@ -36,5 +44,18 @@ if __name__ == '__main__':
 #    to be three characters or fewer as you will have n! permutations for a 
 #    sequence of length n)
 
-    pass #delete this line and replace with your code here
+    test_input1 = 'a'
+    print("Input:", test_input1)
+    print("Expected Output:", ['a'])
+    print("Actual Output:", get_permutations(test_input1))
+
+    test_input2 = 'ab'
+    print("Input:", test_input2)
+    print("Expected Output:", ['ab', 'ba'])
+    print("Actual Output:", get_permutations(test_input2))
+
+    test_input3 = 'abc'
+    print("Input:", test_input3)
+    print("Expected Output:", ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
+    print("Actual Output:", get_permutations(test_input3))
 
