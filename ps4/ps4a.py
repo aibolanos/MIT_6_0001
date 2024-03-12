@@ -61,4 +61,3 @@ if __name__ == '__main__':
     print("Input:", test_input3)
     print("Expected Output:", ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
     print("Actual Output:", get_permutations(test_input3))
-
