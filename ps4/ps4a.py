@@ -30,7 +30,7 @@ def get_permutations(sequence):
         permutations_list.extend(get_permutations(sequence[1:]))
         permutations_list *= len(sequence)
         for item in range(len(permutations_list.copy())):
-            permutations_list[item] = permutations_list[item][:item] + sequence[0] + permutations_list[item][item:]
+            permutations_list[item] = permutations_list[item][:(item % len(sequence))] + sequence[0] + permutations_list[item][(item % len(sequence)):]
     return permutations_list
 
 if __name__ == '__main__':
