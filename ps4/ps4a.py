@@ -23,7 +23,9 @@ def get_permutations(sequence):
     a different order than what is listed here.
     '''
 
+    # Create list to return
     permutations_list = []
+    # If sequence is 1 character, add character to permutations list
     if len(sequence) == 1:
         permutations_list.append(sequence)
     else:
@@ -34,6 +36,7 @@ def get_permutations(sequence):
             for i in range(len(perm) + 1):
                 new_perm = perm[:i] + sequence[0] + perm[i:]
                 permutations_list.append(new_perm)
+    #return permutations list
     return permutations_list
 
 if __name__ == '__main__':
