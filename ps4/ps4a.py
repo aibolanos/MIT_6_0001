@@ -23,15 +23,15 @@ def get_permutations(sequence):
     a different order than what is listed here.
     '''
 
-    perm_list = []
-    perm_list.append(sequence)
+    permutations_list = []
     if len(sequence) == 1:
-        # perm_list.append(sequence)
-        return perm_list
+        permutations_list.append(sequence)
     else:
-        perm_list.extend(get_permutations(sequence[1:]))
-        perm_list[1] += sequence[0]
-    return perm_list
+        permutations_list.extend(get_permutations(sequence[1:]))
+        permutations_list *= len(sequence)
+        for item in range(len(permutations_list.copy())):
+            permutations_list[item] = permutations_list[item][:item] + sequence[0] + permutations_list[item][item:]
+    return permutations_list
 
 if __name__ == '__main__':
 #    #EXAMPLE
