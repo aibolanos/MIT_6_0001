@@ -27,10 +27,13 @@ def get_permutations(sequence):
     if len(sequence) == 1:
         permutations_list.append(sequence)
     else:
-        permutations_list.extend(get_permutations(sequence[1:]))
-        permutations_list *= len(sequence)
-        for item in range(len(permutations_list.copy())):
-            permutations_list[item] = permutations_list[item][:(item % len(sequence))] + sequence[0] + permutations_list[item][(item % len(sequence)):]
+        # Recursively generate permutations of the remaining characters
+        sub_permutations = get_permutations(sequence[1:])
+        for perm in sub_permutations:
+            # Insert the first character at each position in each permutation
+            for i in range(len(perm) + 1):
+                new_perm = perm[:i] + sequence[0] + perm[i:]
+                permutations_list.append(new_perm)
     return permutations_list
 
 if __name__ == '__main__':
