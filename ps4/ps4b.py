@@ -236,6 +236,10 @@ if __name__ == '__main__':
     print("Expected Output: jgnnq")
     print('Actual Output:', plaintext1.get_message_text_encrypted())
 
+    plaintext2 = PlaintextMessage("World", 5)
+    print("Expected Output: Btwqi")
+    print('Actual Output:', plaintext2.get_message_text_encrypted())
+
 
     #TODO: best shift value and unencrypted story 
     
