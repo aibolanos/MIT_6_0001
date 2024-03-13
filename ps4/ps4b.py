@@ -157,7 +157,7 @@ class PlaintextMessage(Message):
         
         Returns: self.shift
         '''
-        return self.shit
+        return self.shift
 
     def get_encryption_dict(self):
         '''
@@ -233,8 +233,12 @@ if __name__ == '__main__':
 
     #TODO: WRITE YOUR TEST CASES HERE
     plaintext1 = PlaintextMessage("hello", 2)
-    print("Expected Output: jgnnq")
-    print('Actual Output:', plaintext1.get_message_text_encrypted())
+    print("Expected Output get_message_text_encrypted: jgnnq")
+    print('Actual Output get_message_text_encrypted:', plaintext1.get_message_text_encrypted())
+
+    print("Expected Output get_shift(): 2")
+    print("Actual Output get_shift():", plaintext1.get_shift())
+    print("\n")
 
     plaintext2 = PlaintextMessage("World", 5)
     print("Expected Output: Btwqi")
