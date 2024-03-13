@@ -146,7 +146,10 @@ class PlaintextMessage(Message):
             self.message_text_encrypted (string, created using shift)
 
         '''
-        pass #delete this line and replace with your code here
+        Message.__init__(self, text)
+        self.shift = shift
+        self.encryption_dict = Message.build_shift_dict(shift)
+        self.message_text_encrypted = Message.apply_shift(shift)
 
     def get_shift(self):
         '''
@@ -229,6 +232,7 @@ if __name__ == '__main__':
 #    print('Actual Output:', ciphertext.decrypt_message())
 
     #TODO: WRITE YOUR TEST CASES HERE
+
 
     #TODO: best shift value and unencrypted story 
     
