@@ -238,13 +238,30 @@ if __name__ == '__main__':
 
     print("Expected Output get_shift(): 2")
     print("Actual Output get_shift():", plaintext1.get_shift())
+    
+    print("Expected Output get_encryption_dict(): {'a': 'c', 'b': 'd', 'c': 'e', 'd': 'f', 'e': 'g', 'f': 'h', 'g': 'i', 'h': 'j', 'i': 'k', 'j': 'l', 'k': 'm', 'l': 'n', 'm': 'o', 'n': 'p', 'o': 'q', 'p': 'r', 'q': 's', 'r': 't', 's': 'u', 't': 'v', 'u': 'w', 'v': 'x', 'w': 'y', 'x': 'z', 'y': 'a', 'z': 'b', 'A': 'C', 'B': 'D', 'C': 'E', 'D': 'F', 'E': 'G', 'F': 'H', 'G': 'I', 'H': 'J', 'I': 'K', 'J': 'L', 'K': 'M', 'L': 'N', 'M': 'O', 'N': 'P', 'O': 'Q', 'P': 'R', 'Q': 'S', 'R': 'T', 'S': 'U', 'T': 'V', 'U': 'W', 'V': 'X', 'W': 'Y', 'X': 'Z', 'Y': 'A', 'Z': 'B'}")
+    print("Actual Output get_encryption_dict():", plaintext1.get_encryption_dict())
+    
+    print("Expected Output change_shift(4): 4")
+    plaintext1.change_shift(4)
+    print("Actual Output change_shift(4):", plaintext1.get_shift())
+    
     print("\n")
 
     plaintext2 = PlaintextMessage("World", 5)
     print("Expected Output: Btwqi")
     print('Actual Output:', plaintext2.get_message_text_encrypted())
+    
+    print("Expected Output get_shift(): 5")
+    print("Actual Output get_shift():", plaintext2.get_shift())
+    
+    print("Expected Output get_encryption_dict(): {'a': 'f', 'b': 'g', 'c': 'h', 'd': 'i', 'e': 'j', 'f': 'k', 'g': 'l', 'h': 'm', 'i': 'n', 'j': 'o', 'k': 'p', 'l': 'q', 'm': 'r', 'n': 's', 'o': 't', 'p': 'u', 'q': 'v', 'r': 'w', 's': 'x', 't': 'y', 'u': 'z', 'v': 'a', 'w': 'b', 'x': 'c', 'y': 'd', 'z': 'e', 'A': 'F', 'B': 'G', 'C': 'H', 'D': 'I', 'E': 'J', 'F': 'K', 'G': 'L', 'H': 'M', 'I': 'N', 'J': 'O', 'K': 'P', 'L': 'Q', 'M': 'R', 'N': 'S', 'O': 'T', 'P': 'U', 'Q': 'V', 'R': 'W', 'S': 'X', 'T': 'Y', 'U': 'Z', 'V': 'A', 'W': 'B', 'X': 'C', 'Y': 'D', 'Z': 'E'}")
+    print("Actual Output get_encryption_dict():", plaintext2.get_encryption_dict())
+    
+    print("Expected Output change_shift(7): 7")
+    plaintext2.change_shift(7)
+    print("Actual Output change_shift(7):", plaintext2.get_shift())
 
 
     #TODO: best shift value and unencrypted story 
     
-    pass #delete this line and replace with your code here
