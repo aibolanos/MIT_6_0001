@@ -217,7 +217,15 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        pass #delete this line and replace with your code here
+        self.get_valid_words
+        for shift in range(1, 25):
+            valid_words = 0
+            plaintext = self.apply_shift(shift)
+            for word in plaintext:
+                if is_word(WORDLIST_FILENAME, word):
+                    valid_words+=1
+                
+        return (26 - shift, plaintext)
 
 if __name__ == '__main__':
 
@@ -261,6 +269,18 @@ if __name__ == '__main__':
     print("Expected Output change_shift(7): 7")
     plaintext2.change_shift(7)
     print("Actual Output change_shift(7):", plaintext2.get_shift())
+    
+    print("\n")
+
+    ciphertext = CiphertextMessage('jgnnq')
+    print('Expected Output:', (24, 'hello'))
+    print('Actual Output:', ciphertext.decrypt_message())
+    
+    print("\n")
+    
+    ciphertext = CiphertextMessage('jgnnq')
+    print('Expected Output:', (21, 'world'))
+    print('Actual Output:', ciphertext.decrypt_message())
 
 
     #TODO: best shift value and unencrypted story 
