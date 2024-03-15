@@ -217,15 +217,22 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        self.get_valid_words
-        for shift in range(1, 25):
-            valid_words = 0
-            plaintext = self.apply_shift(shift)
-            for word in plaintext:
-                if is_word(WORDLIST_FILENAME, word):
-                    valid_words+=1
-                
-        return (26 - shift, plaintext)
+        plaintext = ""
+        tempWord = ""
+        count = 0
+        shift = 0
+        for s in range(1, 26):
+            tempWord = self.apply_shift(s)
+            tempCount = 0
+            for word in tempWord.split():
+                if is_word(self.valid_words, word):
+                    tempCount += 1
+                if tempCount > count:
+                    count = tempCount
+                    plaintext = tempWord
+                    shift = s
+                    
+        return (shift, plaintext)
 
 if __name__ == '__main__':
 
@@ -278,8 +285,8 @@ if __name__ == '__main__':
     
     print("\n")
     
-    ciphertext = CiphertextMessage('jgnnq')
-    print('Expected Output:', (21, 'world'))
+    ciphertext = CiphertextMessage('Btwqi')
+    print('Expected Output:', (21, 'World'))
     print('Actual Output:', ciphertext.decrypt_message())
 
 
