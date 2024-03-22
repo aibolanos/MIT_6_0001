@@ -127,7 +127,10 @@ class Message(object):
         shift_dict = self.build_shift_dict(shift)
         shifted_message = ""
         for letter in self.message_text:
-            shifted_message += shift_dict[letter]
+            if letter not in string.ascii_letters:
+                shifted_message += letter
+            else:
+                shifted_message += shift_dict[letter]
         return shifted_message
 
 class PlaintextMessage(Message):
@@ -246,7 +249,7 @@ if __name__ == '__main__':
 #    print('Expected Output:', (24, 'hello'))
 #    print('Actual Output:', ciphertext.decrypt_message())
 
-    #TODO: WRITE YOUR TEST CASES HERE
+    # TEST CASES HERE
     plaintext1 = PlaintextMessage("hello", 2)
     print("Expected Output get_message_text_encrypted: jgnnq")
     print('Actual Output get_message_text_encrypted:', plaintext1.get_message_text_encrypted())
@@ -279,17 +282,20 @@ if __name__ == '__main__':
     
     print("\n")
 
-    ciphertext = CiphertextMessage('jgnnq')
+    ciphertext1 = CiphertextMessage('jgnnq')
     print('Expected Output:', (24, 'hello'))
-    print('Actual Output:', ciphertext.decrypt_message())
+    print('Actual Output:', ciphertext1.decrypt_message())
     
     print("\n")
     
-    ciphertext = CiphertextMessage('Btwqi')
+    ciphertext2 = CiphertextMessage('Btwqi')
     print('Expected Output:', (21, 'World'))
-    print('Actual Output:', ciphertext.decrypt_message())
+    print('Actual Output:', ciphertext2.decrypt_message())
+    print('\n')
 
 
-    #TODO: best shift value and unencrypted story 
-    
-    pass #delete this line and replace with your code here
+    # best shift value and unencrypted story
+    story = get_story_string()
+    ciphertext_story = CiphertextMessage(story)
+    print(ciphertext_story.decrypt_message()) 
+    print('\n')
