@@ -110,7 +110,19 @@ class SubMessage(object):
                  another letter (string). 
         '''
         
-        pass #delete this line and replace with your code here
+        transpose_dict = {}
+        for letter in string.ascii_letters:
+            if letter in string.ascii_lowercase:
+                if letter in VOWELS_LOWER:
+                    pass
+                else:
+                    transpose_dict.update({letter : chr((ord(letter) - 97 + shift) % 26 + 97)})
+            else:
+                if letter in VOWELS_UPPER:
+                    pass
+                else:
+                    transpose_dict.update({letter : chr((ord(letter) - 65 + shift) % 26 + 65)})
+        return transpose_dict
     
     def apply_transpose(self, transpose_dict):
         '''
