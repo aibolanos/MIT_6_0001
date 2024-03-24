@@ -230,10 +230,10 @@ class CiphertextMessage(Message):
             for word in tempWord.split():
                 if is_word(self.valid_words, word):
                     tempCount += 1
-                if tempCount > count:
-                    count = tempCount
-                    plaintext = tempWord
-                    shift = s
+            if tempCount > count:
+                count = tempCount
+                plaintext = tempWord
+                shift = s
                     
         return (shift, plaintext)
 

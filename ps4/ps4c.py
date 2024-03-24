@@ -148,7 +148,7 @@ class EncryptedSubMessage(SubMessage):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass #delete this line and replace with your code here
+        SubMessage.__init__(self, text)
 
     def decrypt_message(self):
         '''
@@ -168,7 +168,22 @@ class EncryptedSubMessage(SubMessage):
         
         Hint: use your function from Part 4A
         '''
-        pass #delete this line and replace with your code here
+        plaintext = ""
+        count = 0
+        permutation_list = get_permutations(VOWELS_LOWER)
+        for permutations in permutation_list:
+            tempCount = 0
+            transpose_dict = self.build_transpose_dict(permutations)
+            tempword = self.apply_transpose(transpose_dict)
+            for word in tempword.split():
+                if is_word(self.valid_words, word):
+                    tempCount += 1
+            if tempCount > count:
+                count = tempCount
+                plaintext = tempword
+
+        return plaintext
+
     
 
 if __name__ == '__main__':
@@ -182,6 +197,7 @@ if __name__ == '__main__':
     print("Actual encryption:", message.apply_transpose(enc_dict))
     enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
     print("Decrypted message:", enc_message.decrypt_message())
+    print('\n')
      
     #TODO: WRITE YOUR TEST CASES HERE
 
@@ -193,12 +209,13 @@ if __name__ == '__main__':
     print("Actual encryption:", message.apply_transpose(enc_dict))
     enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
     print("Decrypted message:", enc_message.decrypt_message())
+    print('\n')
 
-    message = SubMessage("Uh, oh. This is a test case.")
-    permutation = "aeiou"
+    message = SubMessage("I am writing a secret message. Do not look!")
+    permutation = "eauio"
     enc_dict = message.build_transpose_dict(permutation)
     print("Original message:", message.get_message_text(), "Permutation:", permutation)
-    print("Expected encryption:", "Uh, oh. This is a test case.")
+    print("Expected encryption:", "O em wrotong e sacrat massega. Du nut luuk!")
     print("Actual encryption:", message.apply_transpose(enc_dict))
     enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
     print("Decrypted message:", enc_message.decrypt_message())
