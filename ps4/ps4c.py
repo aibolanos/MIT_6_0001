@@ -109,19 +109,15 @@ class SubMessage(object):
         Returns: a dictionary mapping a letter (string) to 
                  another letter (string). 
         '''
-        
         transpose_dict = {}
+        for index in range(len(vowels_permutation)):
+            transpose_dict.update({vowels_permutation[index] : VOWELS_LOWER[index]})
+        upper_vowels_permutation = vowels_permutation.upper()
+        for index in range(len(upper_vowels_permutation)):
+            transpose_dict.update({upper_vowels_permutation[index] : VOWELS_UPPER[index]})
         for letter in string.ascii_letters:
-            if letter in string.ascii_lowercase:
-                if letter in VOWELS_LOWER:
-                    pass
-                else:
-                    transpose_dict.update({letter : chr((ord(letter) - 97 + shift) % 26 + 97)})
-            else:
-                if letter in VOWELS_UPPER:
-                    pass
-                else:
-                    transpose_dict.update({letter : chr((ord(letter) - 65 + shift) % 26 + 65)})
+            if letter not in VOWELS_LOWER and letter not in VOWELS_UPPER:
+                transpose_dict.update({letter:letter})
         return transpose_dict
     
     def apply_transpose(self, transpose_dict):
@@ -174,6 +170,7 @@ if __name__ == '__main__':
     message = SubMessage("Hello World!")
     permutation = "eaiuo"
     enc_dict = message.build_transpose_dict(permutation)
+    print(enc_dict)
     print("Original message:", message.get_message_text(), "Permutation:", permutation)
     print("Expected encryption:", "Hallu Wurld!")
     print("Actual encryption:", message.apply_transpose(enc_dict))
