@@ -61,7 +61,7 @@ class NewsStory(object):
         self.link = link
         self.pubdate = pubdate
 
-    def get_guild(self):
+    def get_guid(self):
         return self.guid
 
     def get_title(self):

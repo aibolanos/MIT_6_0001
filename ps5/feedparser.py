@@ -90,7 +90,7 @@ except ImportError:
     base64 = binascii = None
 else:
     # Python 3.1 deprecates decodestring in favor of decodebytes
-    _base64decode = getattr(base64, 'decodebytes', base64.decodestring)
+    _bas64decode = getattr(base64, 'decodebytes', base64.decodebytes)
 
 # _s2bytes: convert a UTF-8 str to bytes if the interpreter is Python 3
 # _l2bytes: convert a list of ints to bytes if the interpreter is Python 3
@@ -876,7 +876,7 @@ class _FeedParserMixin:
         # decode base64 content
         if base64 and self.contentparams.get('base64', 0):
             try:
-                output = _base64decode(output)
+                output = _bas64decode(output)
             except binascii.Error:
                 pass
             except binascii.Incomplete:
@@ -884,7 +884,7 @@ class _FeedParserMixin:
             except TypeError:
                 # In Python 3, base64 takes and outputs bytes, not str
                 # This may not be the most correct way to accomplish this
-                output = _base64decode(output.encode('utf-8')).decode('utf-8')
+                output = _bas64decode(output.encode('utf-8')).decode('utf-8')
 
         # resolve relative URIs
         if (element in self.can_be_relative_uri) and output:
@@ -2789,7 +2789,7 @@ class _FeedURLHandler(urllib.request.HTTPDigestAuthHandler, urllib.request.HTTPR
         if base64 is None or 'Authorization' not in req.headers \
                           or 'WWW-Authenticate' not in headers:
             return self.http_error_default(req, fp, code, msg, headers)
-        auth = _base64decode(req.headers['Authorization'].split(' ')[1])
+        auth = _bas64decode(req.headers['Authorization'].split(' ')[1])
         user, passw = auth.split(':')
         realm = re.findall('realm="([^"]*)"', headers['WWW-Authenticate'])[0]
         self.add_password(realm, host, user, passw)
