@@ -53,8 +53,15 @@ def process(url):
 #======================
 
 # Problem 1
+class NewsStory(object):
+    def __init__(self, guid, title, description, link, pubdate):
+        self.guid = guid
+        self.title = title
+        self.description = description
+        self.link = link
+        self.pubdate = pubdate
 
-# TODO: NewsStory
+    
 
 
 #======================
