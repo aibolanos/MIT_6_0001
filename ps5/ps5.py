@@ -61,8 +61,20 @@ class NewsStory(object):
         self.link = link
         self.pubdate = pubdate
 
-    
+    def get_guild(self):
+        return self.guid
 
+    def get_title(self):
+        return self.title
+
+    def get_description(self):
+        return self.description
+
+    def get_link(self):
+        return self.link
+
+    def get_pubdate(self):
+        return self.pubdate
 
 #======================
 # Triggers
