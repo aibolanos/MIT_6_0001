@@ -92,7 +92,13 @@ class Trigger(object):
 # PHRASE TRIGGERS
 
 # Problem 2
-# TODO: PhraseTrigger
+class PhraseTrigger(Trigger):
+    def __init__(self, phrase):
+        self.phrase = phrase.lower()
+    
+    def is_phrase_in(self, text):
+        text = text.lower()
+        return self.phrase in text
 
 # Problem 3
 # TODO: TitleTrigger
